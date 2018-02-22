@@ -258,3 +258,17 @@ git checkout <tag_name>
 git checkout master
 ~~~
 
+38.使用了开源社区的代码，希望同步开源社区最新的代码
+
+~~~Shell
+// 查看是否有upstream fetch 和 upstream push 两栏信息
+git remote -v
+// 如果没有，即没有原作者项目的url，需要自己添加
+git remote add upstream <开源社区项目的URL>
+// 获取从上游仓库（开源社区项目）的各分支
+git fetch upstream
+// 切换本地项目到主分支(master)
+git checkout master
+// 合并upstream/master远程分支到本地项目master分支
+git merge upstream/master
+~~~
