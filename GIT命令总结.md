@@ -272,3 +272,12 @@ git checkout master
 // 合并upstream/master远程分支到本地项目master分支
 git merge upstream/master
 ~~~
+39.添加新的remote
+
+```shell
+// 添加
+git remote add <remote_name> <remote_url>
+// 更新
+git pull <remote_name> <remote_branch_name>
+```
+
