@@ -281,3 +281,22 @@ git remote add <remote_name> <remote_url>
 git pull <remote_name> <remote_branch_name>
 ```
 
+40.重命名本地分支
+
+```shell
+git branch -m <old_local_branch_name> <new_local_branch_name>
+```
+
+41.重命名远程分支
+
+```shell
+// 重命名远程分支对应的本地分支
+git branch -m <old_local_branch_name> <new_local_branch_name>
+
+// 删除远程分支
+git push origin:<old_local_branch_name>
+
+// 重新推送新命名的本地分支
+git push origin <new_local_branch_name>
+```
+
