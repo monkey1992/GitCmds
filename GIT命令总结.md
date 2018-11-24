@@ -171,14 +171,16 @@ git push origin --delete <branch name>
 
 28.撤销已push的代码
 
-```
+```shell
 git reset --soft <commitId> 
 //--soft回会退到之前的版本，但是保留当前工作区的修改
 或者
 git reset --hard <commitId>
 //--hard会抛弃当前工作区的修改
 
-git push origin <branch name> --force
+git push origin <branch name> --force // 不安全，会强制覆盖远端其他人的提交
+git push origin <branch name> --force-with-lease // 安全，会强制覆盖远端其他人的提交
+// 使用 git push --force-with-lease 命令被拒绝时，你需要 fetch 仓库，然后确认其他人是否对此分支有新的修改，如果没有，你才可以继续强制推送。
 ```
 29.查看Git版本
 
