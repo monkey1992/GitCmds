@@ -179,7 +179,7 @@ git reset --hard <commitId>
 //--hard会抛弃当前工作区的修改
 
 git push origin <branch name> --force // 不安全，会强制覆盖远端其他人的提交
-git push origin <branch name> --force-with-lease // 安全，会强制覆盖远端其他人的提交
+git push origin <branch name> --force-with-lease // 安全，不会强制覆盖远端其他人的提交
 // 使用 git push --force-with-lease 命令被拒绝时，你需要 fetch 仓库，然后确认其他人是否对此分支有新的修改，如果没有，你才可以继续强制推送。
 ```
 29.查看Git版本
@@ -281,6 +281,8 @@ git merge upstream/master
 git remote add <remote_name> <remote_url>
 // 更新
 git pull <remote_name> <remote_branch_name>
+
+// 注：更新代码之前可以新增一个本地分支对应到新的remote，防止本地代码合并到新的remote的代码
 ```
 
 40.重命名本地分支
@@ -301,4 +303,34 @@ git push origin:<old_local_branch_name>
 // 重新推送新命名的本地分支
 git push origin <new_local_branch_name>
 ```
+
+42.备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中
+
+~~~shell
+git stash/git stash save "message..."
+~~~
+
+43.显示Git栈内的所有备份，可根据这个列表来决定从备份版本恢复
+
+~~~shell
+git stash list
+~~~
+
+44.恢复保存的工作进度，如果不使用任何参数，会恢复最新保存的工作进度，并将恢复的工作进度从存储的工作进度列表中清除;如果提供参数，则从该 `<stash>` 中恢复，恢复完毕也将从进度列表(栈)中移除 `<stash>`
+
+~~~shell
+git stash pop [--index][<stash>]
+~~~
+
+45.其作用和`git stash pop`类似，但不删除恢复的进度
+
+~~~shell
+git stash apply [--index][stash_id]
+~~~
+
+46.清空Git栈，即删除所有备份
+
+~~~shell
+git stash clear
+~~~
 
