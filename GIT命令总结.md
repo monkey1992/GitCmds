@@ -347,3 +347,12 @@ git stash apply [--index][stash_id]
 ~~~bash
 git stash clear
 ~~~
+
+### 49.将 B 分支重置为 A 分支
+
+```bash
+git checkout B
+git reset --hard A
+git push origin B --force
+```
+
