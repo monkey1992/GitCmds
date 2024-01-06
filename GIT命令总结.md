@@ -355,4 +355,3 @@ git checkout B
 git reset --hard A
 git push origin B --force
 ```
-
